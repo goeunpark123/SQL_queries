@@ -100,3 +100,55 @@ SELECT
   FROM tbl_category a
   JOIN tbl_menu b ON (a.category_code = b.category_code)
  GROUP BY a.category_code;
+ -- --------------------------------------------------------
+ 
+CREATE TABLE sales (
+    CODE INT auto_increment,
+    YEAR VARCHAR(4),
+    MONTH VARCHAR(2),
+    product VARCHAR(50),
+    amount DECIMAL(10, 2),
+    PRIMARY KEY(CODE)
+);
+
+INSERT
+  INTO sales
+(
+  CODE, YEAR, MONTH
+, product, amount
+)
+VALUES
+(
+  NULL, '2023', LPAD('1', 2, '0')
+, 'Product A', 1000.00
+),
+(
+  NULL, '2023', LPAD('1', 2, '0')
+, 'Product B', 1500.00
+),
+(
+  NULL, '2023', LPAD('2', 2, '0')
+, 'Product A', 2000.00
+),
+(
+  NULL, '2023', LPAD('2', 2, '0')
+, 'Product B', 2500.00
+),
+(
+  NULL, '2023', LPAD('3', 2, '0')
+, 'Product A', 1200.00
+),
+(
+  NULL, '2024', LPAD('3', 2, '0')
+, 'Product B', 1700.00
+);
+
+-- 연, 월, 상품명으로 그룹화한 연, 월 중간 및 전체 수량 합계 조회(ROLL UP)
+SELECT
+       year
+     , month
+     , product
+     , SUM(amount) AS total_sales  
+  FROM sales
+ GROUP BY YEAR, MONTH, product
+  WITH ROLLUP;
