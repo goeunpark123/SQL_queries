@@ -60,4 +60,4 @@ SELECT
 		 a.category_name
      , b.category_name
   FROM tbl_category a
-  JOIN tbl_category b ON a.category_code = b.ref_category_code;   -- ref가 상위 구분
+  JOIN tbl_category b ON a.category_code = b.ref_category_code;   -- ref가 상위 구분 속성
