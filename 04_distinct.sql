@@ -6,7 +6,7 @@ SELECT
 
 SELECT
        DISTINCT category_code
-	  , orderable_status
+     , orderable_status
   FROM tbl_menu;  
   
 SELECT
@@ -33,3 +33,8 @@ SELECT
 --        DISTINCT ref_category_code
 --   FROM tbl_category
 --  ORDER BY DISTINCT ref_category_code DESC;
+
+SELECT
+       category_name
+	  , DISTINCT ref_category_code
+  FROM tbl_category;
